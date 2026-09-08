@@ -681,10 +681,16 @@
 
 	.bio-copy {
 		display: grid;
+		align-content: start;
 		gap: 1.2rem;
 		font-family: var(--serif);
 		font-size: clamp(1.02rem, 1.45vw, 1.3rem);
 		line-height: 1.65;
+	}
+
+	.bio-copy__actions {
+		margin-top: 0.4rem;
+		font-family: var(--sans);
 	}
 
 	.timeline {

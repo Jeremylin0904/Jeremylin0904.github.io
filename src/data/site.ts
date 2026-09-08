@@ -107,30 +107,17 @@ export const home = {
 export const about = {
 	en: {
 		eyebrow: 'About',
-		title: 'Connecting statistical thinking with intelligent systems.',
 		bio: [
-			'I am Shiuan-Ting (Jeremy) Lin, a Solution Architect working on AIOps and Network AI at Nokia. I translate operational problems into testable AI use cases, build virtual network environments, and work with telemetry-driven anomaly detection.',
-			'Before moving into industry, I studied mathematics at National Tsing Hua University and earned an M.S. in Statistics from National Yang Ming Chiao Tung University. An exchange at KTH and thesis work at Ericsson R&D led me deeper into trustworthy machine learning and representation learning.',
-			'This path—from statistical structure to explainable models and operational AI—now informs my interest in systems that learn predictive representations of complex, changing environments.',
+			'I work at the intersection of statistics, machine learning, and network systems. At Nokia, I turn operational network problems into testable AI systems, with a focus on AIOps, telemetry, and trustworthy automation.',
+			'My path from spatial representation learning to explainable AI now shapes my interest in self-supervised learning and world models: how systems can learn useful structure from complex, changing environments.',
 		],
-		experienceTitle: 'Experience',
-		educationTitle: 'Education',
-		awardsTitle: 'Selected recognition',
-		awardsIntro:
-			'Recognition across applied AI, computer vision, and rare-event prediction.',
 	},
 	zh: {
 		eyebrow: '關於我',
-		title: '連結統計思維與智慧系統。',
 		bio: [
-			'我是林宣廷（Jeremy），目前在 Nokia 擔任 AIOps 與 Network AI Solution Architect。我將網路維運問題轉化為可驗證的 AI 使用情境、建立虛擬網路環境，並投入以遙測資料為基礎的異常偵測。',
-			'在進入業界之前，我於國立清華大學主修數學，並在國立陽明交通大學取得統計碩士。KTH 的交換經驗與 Ericsson R&D 的論文研究，讓我進一步投入可信賴機器學習與表徵學習。',
-			'從統計結構、可解釋模型到實際運作的 AI 系統，這條路徑也形塑了我對預測式表徵的興趣：讓系統理解複雜且持續變動的環境。',
+			'我的工作位於統計、機器學習與網路系統的交會處。目前在 Nokia，我將網路維運問題轉化為可驗證的 AI 系統，聚焦於 AIOps、遙測資料與可信賴自動化。',
+			'從空間表徵學習到可解釋 AI 的研究歷程，進一步形塑了我對自監督學習與世界模型的興趣：系統如何從複雜且持續變動的環境中學到有用結構。',
 		],
-		experienceTitle: '經歷',
-		educationTitle: '學歷',
-		awardsTitle: '獲獎紀錄',
-		awardsIntro: '橫跨應用 AI、電腦視覺與稀有事件預測的競賽成果。',
 	},
 } as const;
 
