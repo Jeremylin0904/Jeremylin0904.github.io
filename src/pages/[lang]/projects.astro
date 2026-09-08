@@ -22,22 +22,13 @@ const description =
 
 <BaseLayout lang={lang} title={t.eyebrow} description={description}>
 	<header class="page-hero shell">
-		<p class="eyebrow">{t.eyebrow}</p>
-		<h1>{t.title}</h1>
-		<p class="page-hero__intro">{t.intro}</p>
+		<h1>{t.eyebrow}</h1>
 	</header>
 
 	<section class="section section--tint">
 		<div class="shell">
-			<header class="section-heading">
+			<header class="section-heading section-heading--compact">
 				<h2>{t.featured}</h2>
-				<p>
-					{
-						lang === 'en'
-							? 'Long-form investigations completed at NYCU and Ericsson R&D / KTH.'
-							: '在 NYCU 與 Ericsson R&D／KTH 完成的長期研究。'
-					}
-				</p>
 			</header>
 			<div class="project-grid">
 				{featured.map((project) => <ProjectCard project={project} lang={lang} showDetail />)}
@@ -46,15 +37,8 @@ const description =
 	</section>
 
 	<section class="section shell">
-		<header class="section-heading">
+		<header class="section-heading section-heading--compact">
 			<h2>{t.archive}</h2>
-			<p>
-				{
-					lang === 'en'
-						? 'Reproductions and practical systems that broadened my view of learning from visual data.'
-						: '拓展我對視覺資料學習理解的復現與系統實作。'
-				}
-			</p>
 		</header>
 		<div class="project-grid">
 			{archive.map((project) => <ProjectCard project={project} lang={lang} showDetail />)}

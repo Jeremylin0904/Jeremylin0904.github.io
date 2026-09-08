@@ -425,7 +425,7 @@
 	}
 
 	.section {
-		padding-block: clamp(2.75rem, 5vw, 5rem);
+		padding-block: clamp(2.25rem, 4vw, 4rem);
 	}
 
 	.section--tint {
@@ -451,6 +451,11 @@
 		font-size: 1.04rem;
 	}
 
+	.section-heading--compact {
+		display: block;
+		margin-bottom: clamp(1.5rem, 2.5vw, 2.25rem);
+	}
+
 	.project-grid {
 		display: grid;
 		grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -460,10 +465,10 @@
 	.project-card {
 		position: relative;
 		display: flex;
-		min-height: 29rem;
+		min-height: 27rem;
 		flex-direction: column;
 		overflow: hidden;
-		padding: clamp(1.5rem, 4vw, 3rem);
+		padding: clamp(1.4rem, 3vw, 2.25rem);
 		border: 1px solid var(--line);
 		border-radius: var(--radius);
 		background: var(--paper-light);
@@ -632,12 +637,12 @@
 	}
 
 	.page-hero {
-		padding-block: clamp(2.5rem, 5vw, 4.5rem);
+		padding-block: clamp(1.5rem, 3vw, 3rem);
 	}
 
 	.page-hero h1 {
 		max-width: 17ch;
-		font-size: clamp(2.8rem, 5.5vw, 5.3rem);
+		font-size: clamp(2.5rem, 4.5vw, 4.25rem);
 	}
 
 	html[lang='zh-Hant'] .page-hero h1 {
@@ -787,7 +792,7 @@
 	}
 
 	.question-grid li {
-		min-height: 13rem;
+		min-height: 10rem;
 		padding: clamp(1.5rem, 4vw, 3rem);
 		background: var(--paper-light);
 		font-family: var(--serif);
@@ -812,7 +817,7 @@
 	}
 
 	.award-card {
-		min-height: 14rem;
+		min-height: 11rem;
 		padding: 1.75rem;
 		border: 1px solid var(--line);
 		border-radius: var(--radius);
@@ -891,7 +896,7 @@
 	}
 
 	.contact-card {
-		min-height: 24rem;
+		min-height: 18rem;
 		padding: clamp(2rem, 5vw, 4.5rem);
 		background: var(--paper-light);
 	}

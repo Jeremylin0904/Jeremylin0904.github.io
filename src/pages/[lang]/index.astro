@@ -24,7 +24,6 @@ const description =
 <BaseLayout lang={lang} title={profile.name} description={description}>
 	<section class="hero shell">
 		<div class="hero__copy">
-			<p class="eyebrow">{t.eyebrow}</p>
 			<h1>{t.intro}</h1>
 			<p class="hero__summary">{t.summary}</p>
 			<div class="button-row">
@@ -58,26 +57,22 @@ const description =
 
 	<section class="section section--tint">
 		<div class="shell">
-			<header class="section-heading">
+			<header class="section-heading section-heading--compact">
 				<h2>{t.selected}</h2>
-				<div>
-					<p>{t.selectedIntro}</p>
-					<a class="text-link mt-section" href={localizedPath(lang, 'projects')}>
-						{lang === 'en' ? 'View all projects' : '查看所有專案'}
-						<span aria-hidden="true">→</span>
-					</a>
-				</div>
 			</header>
 			<div class="project-grid">
 				{featured.map((project) => <ProjectCard project={project} lang={lang} />)}
 			</div>
+			<a class="text-link mt-section" href={localizedPath(lang, 'projects')}>
+				{lang === 'en' ? 'View all projects' : '查看所有專案'}
+				<span aria-hidden="true">→</span>
+			</a>
 		</div>
 	</section>
 
 	<section class="section">
 		<div class="approach shell">
 			<div>
-				<p class="eyebrow">{lang === 'en' ? 'How I work' : '我的方法'}</p>
 				<h2>{t.approachTitle}</h2>
 			</div>
 			<div>

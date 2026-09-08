@@ -21,22 +21,13 @@ const description =
 
 <BaseLayout lang={lang} title={t.eyebrow} description={description}>
 	<header class="page-hero shell">
-		<p class="eyebrow">{t.eyebrow}</p>
-		<h1>{t.title}</h1>
-		<p class="page-hero__intro">{t.intro}</p>
+		<h1>{t.eyebrow}</h1>
 	</header>
 
 	<section class="section section--tint">
 		<div class="shell">
-			<header class="section-heading">
+			<header class="section-heading section-heading--compact">
 				<h2>{t.threadsTitle}</h2>
-				<p>
-					{
-						lang === 'en'
-							? 'A continuous path from statistical structure to models that explain and anticipate.'
-							: '一條從統計結構出發，走向可解釋與可預測模型的連續路徑。'
-					}
-				</p>
 			</header>
 			<div>
 				{
@@ -58,15 +49,8 @@ const description =
 	</section>
 
 	<section class="section shell">
-		<header class="section-heading">
+		<header class="section-heading section-heading--compact">
 			<h2>{lang === 'en' ? 'Completed thesis work' : '已完成的論文研究'}</h2>
-			<p>
-				{
-					lang === 'en'
-						? 'Two complementary investigations into what models retain and how they communicate decisions.'
-						: '從模型保留何種資訊，以及如何傳達決策出發的兩項互補研究。'
-				}
-			</p>
 		</header>
 		<div class="project-grid">
 			{featured.map((project) => <ProjectCard project={project} lang={lang} showDetail />)}
@@ -75,15 +59,8 @@ const description =
 
 	<section class="section section--tint">
 		<div class="shell">
-			<header class="section-heading">
+			<header class="section-heading section-heading--compact">
 				<h2>{t.directionTitle}</h2>
-				<p>
-					{
-						lang === 'en'
-							? 'These questions connect my completed work to the directions I am exploring now.'
-							: '這些問題連結了已完成的研究，以及我目前持續探索的方向。'
-					}
-				</p>
 			</header>
 			<ol class="question-grid">
 				{
