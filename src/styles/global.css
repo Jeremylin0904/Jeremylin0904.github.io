@@ -665,15 +665,20 @@
 	.bio-layout__portrait {
 		position: sticky;
 		top: 2rem;
+		width: min(100%, 22rem);
+		aspect-ratio: 4 / 5;
+		overflow: hidden;
 		align-self: start;
+		justify-self: center;
+		border-radius: 45% 45% 1.25rem 1.25rem;
+		background: #332f2b;
 	}
 
 	.bio-layout__portrait img {
 		width: 100%;
-		aspect-ratio: 4 / 5;
+		height: 100%;
 		object-fit: cover;
-		object-position: 50% 28%;
-		border-radius: 45% 45% 1.25rem 1.25rem;
+		object-position: 50% 24%;
 		filter: saturate(0.86);
 	}
 
