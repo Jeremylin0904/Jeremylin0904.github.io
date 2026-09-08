@@ -60,7 +60,17 @@ const description =
 					<li class="timeline__item">
 						<p class="timeline__period">{item.period[lang]}</p>
 						<div>
-							<h3>{item.org}</h3>
+							<div class="entity-heading">
+								<img
+									class="entity-logo"
+									src={item.logo}
+									alt=""
+									width="88"
+									height="48"
+									loading="lazy"
+								/>
+								<h3>{item.org}</h3>
+							</div>
 							<p class="timeline__role">{item.role[lang]}</p>
 							<p class="timeline__location">{item.location[lang]}</p>
 							<ul class="timeline__points">
@@ -83,7 +93,17 @@ const description =
 					education.map((item) => (
 						<li class="simple-list__item">
 							<div>
-								<h3>{item.school}</h3>
+								<div class="entity-heading">
+									<img
+										class="entity-logo"
+										src={item.logo}
+										alt=""
+										width="88"
+										height="48"
+										loading="lazy"
+									/>
+									<h3>{item.school}</h3>
+								</div>
 								<p>{item.degree[lang]}</p>
 							</div>
 							<time>{item.period}</time>

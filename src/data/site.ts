@@ -346,6 +346,7 @@ export const projects: Project[] = [
 export const experience = [
 	{
 		org: 'Nokia',
+		logo: '/images/logos/nokia.svg',
 		role: {
 			en: 'Solution Architect, AIOps & Network AI',
 			zh: 'Solution Architect，AIOps 與 Network AI',
@@ -367,6 +368,7 @@ export const experience = [
 	},
 	{
 		org: 'Nokia',
+		logo: '/images/logos/nokia.svg',
 		role: {
 			en: 'Network Engineer, AI/ML Systems Projects',
 			zh: 'Network Engineer，AI/ML 系統專案',
@@ -386,6 +388,7 @@ export const experience = [
 	},
 	{
 		org: 'Ericsson',
+		logo: '/images/logos/ericsson.svg',
 		role: {
 			en: 'Master Thesis Student, Trustworthy / Explainable AI',
 			zh: '碩士論文研究生，可信賴／可解釋 AI',
@@ -408,11 +411,13 @@ export const experience = [
 export const education = [
 	{
 		school: 'National Yang Ming Chiao Tung University',
+		logo: '/images/logos/nycu.png',
 		degree: { en: 'M.S. in Statistics · GPA 3.96 / 4.30', zh: '統計學碩士 · GPA 3.96 / 4.30' },
 		period: '2021 — 2024',
 	},
 	{
 		school: 'KTH Royal Institute of Technology',
+		logo: '/images/logos/kth.svg',
 		degree: {
 			en: 'Exchange Program in Computer Science',
 			zh: '資訊科學交換計畫',
@@ -421,6 +426,7 @@ export const education = [
 	},
 	{
 		school: 'National Tsing Hua University',
+		logo: '/images/logos/nthu.svg',
 		degree: { en: 'B.S. in Mathematics', zh: '數學學士' },
 		period: '2017 — 2021',
 	},
