@@ -84,67 +84,67 @@ const description =
 	</section>
 
 	<section class="section section--tint">
-		<div class="shell">
-			<header class="section-heading section-heading--compact">
-				<h2>{cvCopy.education}</h2>
-			</header>
-			<ul class="simple-list">
-				{
-					education.map((item) => (
-						<li class="simple-list__item">
-							<div>
-								<div class="entity-heading">
-									<img
-										class="entity-logo"
-										src={item.logo}
-										alt=""
-										width="88"
-										height="48"
-										loading="lazy"
-									/>
-									<h3>{item.school}</h3>
+		<div class="about-details-grid shell">
+			<div class="about-details-group">
+				<header class="section-heading section-heading--compact">
+					<h2>{cvCopy.education}</h2>
+				</header>
+				<ul class="simple-list">
+					{
+						education.map((item) => (
+							<li class="simple-list__item">
+								<div>
+									<div class="entity-heading">
+										<img
+											class="entity-logo"
+											src={item.logo}
+											alt=""
+											width="88"
+											height="48"
+											loading="lazy"
+										/>
+										<h3>{item.school}</h3>
+									</div>
+									<p>{item.degree[lang]}</p>
 								</div>
-								<p>{item.degree[lang]}</p>
-							</div>
-							<time>{item.period}</time>
-						</li>
-					))
-				}
-			</ul>
-		</div>
-	</section>
+								<time>{item.period}</time>
+							</li>
+						))
+					}
+				</ul>
+			</div>
 
-	<section class="section shell">
-		<header class="section-heading section-heading--compact">
-			<h2>{cvCopy.skills}</h2>
-		</header>
-		<ul class="skill-list">
-			{
-				skills.map((skill) => (
-					<li>
-						<strong>{skill.label[lang]}</strong>
-						<span>{skill.items}</span>
-					</li>
-				))
-			}
-		</ul>
-	</section>
+			<div class="about-details-group">
+				<header class="section-heading section-heading--compact">
+					<h2>{cvCopy.skills}</h2>
+				</header>
+				<ul class="skill-list skill-list--stacked">
+					{
+						skills.map((skill) => (
+							<li>
+								<strong>{skill.label[lang]}</strong>
+								<span>{skill.items}</span>
+							</li>
+						))
+					}
+				</ul>
+			</div>
 
-	<section class="section section--tint">
-		<div class="shell">
-			<header class="section-heading section-heading--compact">
-				<h2>{lang === 'en' ? 'Selected recognition' : '獲獎紀錄'}</h2>
-			</header>
-			<div class="award-grid">
-				{
-					awards.map((award) => (
-						<article class="award-card">
-							<time>{award.year}</time>
-							<h3>{award.title[lang]}</h3>
-							<p>{award.note[lang]}</p>
-						</article>
-					))
-				}
+			<div class="about-details-group">
+				<header class="section-heading section-heading--compact">
+					<h2>{lang === 'en' ? 'Selected recognition' : '獲獎紀錄'}</h2>
+				</header>
+				<div class="award-grid award-grid--stacked">
+					{
+						awards.map((award) => (
+							<article class="award-card">
+								<time>{award.year}</time>
+								<h3>{award.title[lang]}</h3>
+								<p>{award.note[lang]}</p>
+							</article>
+						))
+					}
+				</div>
 			</div>
 		</div>
 	</section>

@@ -1,5 +1,6 @@
 ---
-import { research, type Lang } from '../../data/site';
+import ProjectCard from '../../components/ProjectCard.astro';
+import { projects, research, type Lang } from '../../data/site';
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import { getLangPaths, isLang } from '../../lib/i18n';
 
@@ -11,6 +12,7 @@ const { lang: langParam } = Astro.params;
 if (!isLang(langParam)) throw new Error('Unsupported language');
 const lang: Lang = langParam;
 const t = research[lang];
+const thesisProjects = projects.filter((project) => project.featured);
 const description =
 	lang === 'en'
 		? 'Research interests of Shiuan-Ting Lin in structured representations, explainable AI, and self-supervised predictive learning.'
@@ -25,9 +27,19 @@ const description =
 	<section class="section section--tint">
 		<div class="shell">
 			<header class="section-heading section-heading--compact">
-				<h2>{t.threadsTitle}</h2>
+				<h2>{t.thesisTitle}</h2>
 			</header>
-			<div>
+			<div class="project-grid project-grid--thesis">
+				{thesisProjects.map((project) => <ProjectCard project={project} lang={lang} compact />)}
+			</div>
+		</div>
+	</section>
+
+	<section class="section shell">
+		<header class="section-heading section-heading--compact">
+			<h2>{t.threadsTitle}</h2>
+		</header>
+		<div class="research-thread-grid">
 				{
 					t.threads.map((thread) => (
 						<article class="research-thread">
@@ -42,7 +54,6 @@ const description =
 						</article>
 					))
 				}
-			</div>
 		</div>
 	</section>
 

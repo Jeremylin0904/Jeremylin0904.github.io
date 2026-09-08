@@ -5,12 +5,17 @@ interface Props {
 	project: Project;
 	lang: Lang;
 	showDetail?: boolean;
+	compact?: boolean;
 }
 
-const { project, lang, showDetail = false } = Astro.props;
+const { project, lang, showDetail = false, compact = false } = Astro.props;
 ---
 
-<article class="project-card" data-accent={project.accent} id={project.slug}>
+<article
+	class:list={['project-card', { 'project-card--compact': compact }]}
+	data-accent={project.accent}
+	id={project.slug}
+>
 	<div class="project-card__visual">
 		<img
 			src={project.image}

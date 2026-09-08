@@ -12,12 +12,11 @@ const { lang: langParam } = Astro.params;
 if (!isLang(langParam)) throw new Error('Unsupported language');
 const lang: Lang = langParam;
 const t = pageCopy.projects[lang];
-const featured = projects.filter((project) => project.featured);
-const archive = projects.filter((project) => !project.featured);
+const practicalProjects = projects.filter((project) => !project.featured);
 const description =
 	lang === 'en'
-		? 'Research and machine learning projects by Shiuan-Ting Lin, including explainable AI, sparse representations, self-supervised video learning, and computer vision.'
-		: '林宣廷的研究與機器學習專案，涵蓋可解釋 AI、稀疏表徵、自監督影片學習與電腦視覺。';
+		? 'Machine learning and computer vision projects by Shiuan-Ting Lin.'
+		: '林宣廷的機器學習與電腦視覺實作專案。';
 ---
 
 <BaseLayout lang={lang} title={t.eyebrow} description={description}>
@@ -28,20 +27,11 @@ const description =
 	<section class="section section--tint">
 		<div class="shell">
 			<header class="section-heading section-heading--compact">
-				<h2>{t.featured}</h2>
+				<h2>{t.archive}</h2>
 			</header>
 			<div class="project-grid">
-				{featured.map((project) => <ProjectCard project={project} lang={lang} showDetail />)}
+				{practicalProjects.map((project) => <ProjectCard project={project} lang={lang} />)}
 			</div>
-		</div>
-	</section>
-
-	<section class="section shell">
-		<header class="section-heading section-heading--compact">
-			<h2>{t.archive}</h2>
-		</header>
-		<div class="project-grid">
-			{archive.map((project) => <ProjectCard project={project} lang={lang} showDetail />)}
 		</div>
 	</section>
 </BaseLayout>

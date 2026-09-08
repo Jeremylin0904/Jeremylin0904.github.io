@@ -127,6 +127,7 @@ export const research = {
 		title: 'Learning useful structure—and understanding what a model learned.',
 		intro:
 			'My research path began with sparse statistical representations, moved into explainable machine learning, and now points toward self-supervised and predictive learning.',
+		thesisTitle: 'Thesis research',
 		threadsTitle: 'Research threads',
 		threads: [
 			{
@@ -154,6 +155,7 @@ export const research = {
 		title: '學習有用的結構，也理解模型究竟學到了什麼。',
 		intro:
 			'我的研究從稀疏統計表徵出發，延伸至可解釋機器學習，並逐步走向自監督與預測式學習。',
+		thesisTitle: '論文研究',
 		threadsTitle: '研究脈絡',
 		threads: [
 			{
@@ -411,7 +413,7 @@ export const experience = [
 export const education = [
 	{
 		school: 'National Yang Ming Chiao Tung University',
-		logo: '/images/logos/nycu.png',
+		logo: '/images/logos/nycu.svg',
 		degree: { en: 'M.S. in Statistics · GPA 3.96 / 4.30', zh: '統計學碩士 · GPA 3.96 / 4.30' },
 		period: '2021 — 2024',
 	},
@@ -492,17 +494,16 @@ export const pageCopy = {
 		en: {
 			eyebrow: 'Projects',
 			title: 'Research and practical experiments.',
-			intro:
-				'A selection of thesis work, reproductions, and systems projects across statistical learning, explainable AI, and computer vision.',
+			intro: 'Selected implementations across representation learning and computer vision.',
 			featured: 'Thesis research',
-			archive: 'Project archive',
+			archive: 'Selected projects',
 		},
 		zh: {
 			eyebrow: '專案',
 			title: '研究與實作。',
-			intro: '精選統計學習、可解釋 AI 與電腦視覺領域的論文研究、復現與系統專案。',
+			intro: '精選表徵學習與電腦視覺領域的實作專案。',
 			featured: '論文研究',
-			archive: '專案集',
+			archive: '精選專案',
 		},
 	},
 	cv: {
