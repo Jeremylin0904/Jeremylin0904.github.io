@@ -32,6 +32,18 @@ const description =
 					{t.secondaryCta}
 				</a>
 			</div>
+			<nav
+				class="hero-socials"
+				aria-label={lang === 'en' ? 'Contact and social profiles' : '聯絡方式與社群'}
+			>
+				<a href={`mailto:${profile.email}`}>Email <span aria-hidden="true">↗</span></a>
+				<a href={profile.linkedin} target="_blank" rel="noreferrer">
+					LinkedIn <span aria-hidden="true">↗</span>
+				</a>
+				<a href={profile.github} target="_blank" rel="noreferrer">
+					GitHub <span aria-hidden="true">↗</span>
+				</a>
+			</nav>
 		</div>
 
 		<figure class="hero-portrait">
