@@ -13,15 +13,20 @@ const { lang: langParam } = Astro.params;
 if (!isLang(langParam)) throw new Error('Unsupported language');
 const lang: Lang = langParam;
 const t = home[lang];
+const researchFocus =
+	lang === 'en'
+		? 'World Models · Predictive Representation Learning · Computer Vision · Self-Supervised Learning'
+		: '世界模型 · 預測式表徵學習 · 電腦視覺 · 自監督學習';
 const description =
 	lang === 'en'
-		? 'Shiuan-Ting (Jeremy) Lin studies statistical learning, explainable AI, and representation learning, and works on AIOps and Network AI at Nokia.'
-		: '林宣廷（Jeremy）關注統計學習、可解釋 AI 與表徵學習，目前於 Nokia 從事 AIOps 與 Network AI。';
+		? 'Shiuan-Ting (Jeremy) Lin is a Solution Architect at Nokia with a background in mathematics and statistics. His research interests include world models, predictive representation learning, self-supervised learning, computer vision, and embodied intelligence.'
+		: '林宣廷（Jeremy）目前任職 Nokia Solution Architect，具數學與統計背景，研究興趣包括世界模型、預測式表徵學習、自監督學習、電腦視覺與具身智慧。';
 ---
 
 <BaseLayout lang={lang} title={profile.name} description={description}>
 	<section class="hero shell">
 		<div class="hero__copy">
+			<p class="eyebrow">{researchFocus}</p>
 			<h1 class="sr-only">{profile.name}</h1>
 			<p class="hero__summary">{t.summary}</p>
 			<div class="button-row">
