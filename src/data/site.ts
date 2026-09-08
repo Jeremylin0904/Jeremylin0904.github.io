@@ -256,6 +256,41 @@ export const projects: Project[] = [
 		accent: 'sage',
 	},
 	{
+		slug: 'sp500-quant-dashboard',
+		year: '2026',
+		featured: false,
+		category: {
+			en: 'Quantitative ML · Interactive dashboard',
+			zh: '量化機器學習 · 互動儀表板',
+		},
+		title: { en: 'S&P 500 Quant ML Dashboard', zh: 'S&P 500 量化選股儀表板' },
+		summary: {
+			en: 'An end-to-end stock-selection pipeline with leakage-aware walk-forward validation, out-of-sample backtesting, and factor analysis.',
+			zh: '整合無資料洩漏的 walk-forward 驗證、樣本外回測與因子分析之端到端量化選股流程。',
+		},
+		detail: {
+			en: 'Ranks next-quarter outperformers from 40+ point-in-time fundamentals, converts Top-30 predictions into a monthly-rebalanced portfolio, and exposes methodology, holdings, performance, and factor attribution through a bilingual dashboard.',
+			zh: '使用 40+ 項 point-in-time 基本面特徵預測下季相對強勢股票，將 Top-30 預測轉化為每月再平衡投資組合，並以雙語儀表板呈現方法、持股、績效與因子歸因。',
+		},
+		image: '/images/projects/sp500-quant-dashboard.jpg',
+		imageAlt: {
+			en: 'S&P 500 Quant Dashboard showing walk-forward periods and out-of-sample performance metrics.',
+			zh: '顯示 walk-forward 期間與樣本外績效指標的 S&P 500 量化儀表板。',
+		},
+		tags: ['Python', 'React', 'AutoML', 'Walk-Forward'],
+		links: [
+			{
+				label: { en: 'Live dashboard', zh: '線上儀表板' },
+				url: 'https://jeremylin0904.github.io/sp500-quant-dashboard/',
+			},
+			{
+				label: { en: 'Code', zh: '程式碼' },
+				url: 'https://github.com/Jeremylin0904/sp500-quant-dashboard',
+			},
+		],
+		accent: 'ink',
+	},
+	{
 		slug: 'siammae',
 		year: '2024',
 		featured: false,
@@ -310,6 +345,38 @@ export const projects: Project[] = [
 			},
 		],
 		accent: 'sand',
+	},
+	{
+		slug: 'taiwanese-food-classification',
+		year: '2022',
+		featured: false,
+		category: { en: 'Computer vision application', zh: '電腦視覺應用' },
+		title: { en: 'Taiwanese Food Classification App', zh: '台灣小吃影像分類應用' },
+		summary: {
+			en: 'An EfficientNetV2-based classifier for 101 Taiwanese food categories with Top-5 predictions and a user feedback loop.',
+			zh: '以 EfficientNetV2 辨識 101 類台灣小吃，提供 Top-5 預測與使用者回饋修正流程。',
+		},
+		detail: {
+			en: 'Combined transfer learning, web-crawled training data, an Anvil interface, and domain selection. Reported Top-5 accuracy was 69% on the Kaggle test set and 49.6% on the web-scraped test set.',
+			zh: '結合遷移學習、網路爬取訓練資料、Anvil 介面與 domain selection；Kaggle 測試集 Top-5 準確率為 69%，網路爬取測試集為 49.6%。',
+		},
+		image: '/images/projects/taiwanese-food-classification.jpg',
+		imageAlt: {
+			en: 'Food classification interface showing an uploaded image and its Top-5 predicted Taiwanese dishes.',
+			zh: '顯示上傳圖片與 Top-5 台灣小吃預測結果的分類介面。',
+		},
+		tags: ['TensorFlow', 'EfficientNetV2', 'Transfer Learning', 'Anvil'],
+		links: [
+			{
+				label: { en: 'Code', zh: '程式碼' },
+				url: 'https://github.com/Jeremylin0904/CV_Food-classification_Backend',
+			},
+			{
+				label: { en: 'Demo video', zh: '展示影片' },
+				url: 'https://youtu.be/DlKp4pPSPNw?t=458',
+			},
+		],
+		accent: 'sage',
 	},
 	{
 		slug: 'self-driving-robot',
