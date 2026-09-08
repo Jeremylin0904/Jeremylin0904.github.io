@@ -63,7 +63,7 @@ export const home = {
 	en: {
 		eyebrow: 'Statistical learning · Explainable AI · Representation learning',
 		summary:
-			'I am a Solution Architect at Nokia with a foundation in mathematics and statistics. My work spans trustworthy machine learning, spatial representation analysis, and AI systems for network operations—with a growing interest in self-supervised and predictive representation learning.',
+			'I am a Solution Architect at Nokia with a foundation in mathematics and statistics. My work spans trustworthy machine learning, spatial representation analysis, and AI systems for network operations—with a growing interest in self-supervised and predictive representation learning, world models, and embodied intelligence.',
 		primaryCta: 'Explore my research',
 		secondaryCta: 'About me',
 		selected: 'Selected research',
@@ -84,7 +84,7 @@ export const home = {
 	zh: {
 		eyebrow: '統計學習 · 可解釋人工智慧 · 表徵學習',
 		summary:
-			'我目前是 Nokia 的 Solution Architect，具備數學與統計背景。過去的工作橫跨可信賴機器學習、空間表徵分析，以及網路維運 AI 系統；目前進一步關注自監督與預測式表徵學習。',
+			'我目前是 Nokia 的 Solution Architect，具備數學與統計背景。過去的工作橫跨可信賴機器學習、空間表徵分析，以及網路維運 AI 系統；目前進一步關注自監督與預測式表徵學習、世界模型及具身智慧。',
 		primaryCta: '探索我的研究',
 		secondaryCta: '關於我',
 		selected: '精選研究',
