@@ -10,6 +10,7 @@ interface Props {
 const { lang, pathname } = Astro.props;
 const t = ui[lang];
 const alternate = alternatePath(lang, pathname);
+const displayName = '林宣廷 · Shiuan-Ting Lin (Jeremy)';
 
 const navItems = [
 	{ key: 'home', href: localizedPath(lang) },
@@ -25,9 +26,9 @@ const normalizedPath = pathname.endsWith('/') ? pathname : `${pathname}/`;
 
 <header class="site-header">
 	<div class="site-header__inner shell">
-		<a class="wordmark" href={localizedPath(lang)} aria-label={`${profile.name} — ${t.nav.home}`}>
+		<a class="wordmark" href={localizedPath(lang)} aria-label={`${displayName} — ${t.nav.home}`}>
 			<span class="wordmark__mark" aria-hidden="true">JL</span>
-			<span>{profile.name}</span>
+			<span>{displayName}</span>
 		</a>
 
 		<button
