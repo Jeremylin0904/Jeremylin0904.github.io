@@ -62,8 +62,7 @@ export const ui = {
 export const home = {
 	en: {
 		eyebrow: 'Statistical learning · Explainable AI · Representation learning',
-		intro:
-			'I study how models represent structure, explain predictions, and learn from complex data.',
+		intro: 'I study structure, explanation, and learning in intelligent systems.',
 		summary:
 			'I am a Solution Architect at Nokia with a foundation in mathematics and statistics. My work spans trustworthy machine learning, spatial representation analysis, and AI systems for network operations—with a growing interest in self-supervised and predictive representation learning.',
 		primaryCta: 'Explore my research',
@@ -85,7 +84,7 @@ export const home = {
 	},
 	zh: {
 		eyebrow: '統計學習 · 可解釋人工智慧 · 表徵學習',
-		intro: '我研究模型如何保留資料結構、解釋預測，並從複雜資料中學習。',
+		intro: '我研究智慧系統如何表徵結構、解釋預測並持續學習。',
 		summary:
 			'我目前是 Nokia 的 Solution Architect，具備數學與統計背景。過去的工作橫跨可信賴機器學習、空間表徵分析，以及網路維運 AI 系統；目前進一步關注自監督與預測式表徵學習。',
 		primaryCta: '探索我的研究',
