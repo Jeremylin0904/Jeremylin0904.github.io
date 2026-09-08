@@ -3,7 +3,7 @@ import { Image } from 'astro:assets';
 import { home, profile, type Lang } from '../../data/site';
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import { getLangPaths, isLang, localizedPath } from '../../lib/i18n';
-import portrait from '../../assets/portrait.jpg';
+import portrait from '../../assets/home-portrait.jpg';
 
 export function getStaticPaths() {
 	return getLangPaths();
