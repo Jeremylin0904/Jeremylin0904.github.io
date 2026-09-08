@@ -221,6 +221,10 @@ export const projects: Project[] = [
 		tags: ['Python', 'Autoencoders', 'Sparse PCA', 'Simulation'],
 		links: [
 			{
+				label: { en: 'Read thesis', zh: '閱讀論文' },
+				url: 'https://thesis.lib.nycu.edu.tw/items/ad0b49d5-aaff-43a7-9e3f-25de1423e66f',
+			},
+			{
 				label: { en: 'Code', zh: '程式碼' },
 				url: 'https://github.com/Jeremylin0904/Spatial-Sparse-PCA-Using-Autoencoders-with-Convolutions',
 			},
