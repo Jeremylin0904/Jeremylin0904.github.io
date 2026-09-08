@@ -266,7 +266,7 @@
 
 	.hero {
 		display: grid;
-		min-height: calc(100svh - 4.75rem);
+		min-height: min(34rem, calc(100svh - 4.75rem));
 		grid-template-columns: minmax(0, 1.18fr) minmax(280px, 0.7fr);
 		align-items: center;
 		gap: clamp(3rem, 8vw, 8rem);
@@ -312,7 +312,7 @@
 
 	.hero__summary {
 		max-width: 42rem;
-		margin-top: 1.25rem;
+		margin-top: 0;
 		color: var(--ink-soft);
 		font-size: clamp(1.04rem, 1.5vw, 1.18rem);
 	}
@@ -484,27 +484,24 @@
 
 	.project-card__visual {
 		position: relative;
-		height: 8.5rem;
+		overflow: hidden;
+		aspect-ratio: 16 / 9;
 		margin-bottom: 1.75rem;
+		border: 1px solid var(--line);
 		border-radius: calc(var(--radius) - 0.35rem);
 		background: var(--paper-deep);
 	}
 
-	.project-card__visual svg {
+	.project-card__visual img {
+		display: block;
 		width: 100%;
 		height: 100%;
+		object-fit: cover;
+		transition: transform 320ms ease;
 	}
 
-	.project-card[data-accent='sage'] .project-card__visual {
-		background: var(--sage-light);
-	}
-
-	.project-card[data-accent='ink'] .project-card__visual {
-		background: #d6d5ce;
-	}
-
-	.project-card[data-accent='sand'] .project-card__visual {
-		background: #eee0c4;
+	.project-card:hover .project-card__visual img {
+		transform: scale(1.018);
 	}
 
 	.project-card__meta {
@@ -783,36 +780,6 @@
 	.research-thread__body > p {
 		color: var(--ink-soft);
 		font-size: 1.02rem;
-	}
-
-	.question-grid {
-		display: grid;
-		grid-template-columns: repeat(2, minmax(0, 1fr));
-		gap: 1px;
-		overflow: hidden;
-		border: 1px solid var(--line);
-		border-radius: var(--radius);
-		background: var(--line);
-		list-style: none;
-	}
-
-	.question-grid li {
-		min-height: 10rem;
-		padding: clamp(1.5rem, 4vw, 3rem);
-		background: var(--paper-light);
-		font-family: var(--serif);
-		font-size: clamp(1.25rem, 2.3vw, 1.8rem);
-		line-height: 1.35;
-	}
-
-	.question-grid span {
-		display: block;
-		margin-bottom: 2.2rem;
-		color: var(--clay);
-		font-family: var(--sans);
-		font-size: 0.72rem;
-		font-weight: 800;
-		letter-spacing: 0.08em;
 	}
 
 	.award-grid {
@@ -1127,7 +1094,6 @@
 	}
 
 	.project-grid,
-	.question-grid,
 	.award-grid,
 	.contact-grid {
 		grid-template-columns: 1fr;

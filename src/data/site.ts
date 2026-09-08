@@ -62,7 +62,6 @@ export const ui = {
 export const home = {
 	en: {
 		eyebrow: 'Statistical learning · Explainable AI · Representation learning',
-		intro: 'I study structure, explanation, and learning in intelligent systems.',
 		summary:
 			'I am a Solution Architect at Nokia with a foundation in mathematics and statistics. My work spans trustworthy machine learning, spatial representation analysis, and AI systems for network operations—with a growing interest in self-supervised and predictive representation learning.',
 		primaryCta: 'Explore my research',
@@ -84,7 +83,6 @@ export const home = {
 	},
 	zh: {
 		eyebrow: '統計學習 · 可解釋人工智慧 · 表徵學習',
-		intro: '我研究智慧系統如何表徵結構、解釋預測並持續學習。',
 		summary:
 			'我目前是 Nokia 的 Solution Architect，具備數學與統計背景。過去的工作橫跨可信賴機器學習、空間表徵分析，以及網路維運 AI 系統；目前進一步關注自監督與預測式表徵學習。',
 		primaryCta: '探索我的研究',
@@ -163,13 +161,6 @@ export const research = {
 				tags: ['Video understanding', 'Self-supervision', 'JEPA', 'World models'],
 			},
 		],
-		directionTitle: 'Questions I keep returning to',
-		questions: [
-			'Which structures should be built into a model, and which should emerge from data?',
-			'How do we test whether a representation captures the relationships that matter?',
-			'Can predictive objectives produce abstractions that remain useful under change?',
-			'How can explanations stay faithful without becoming too complex to use?',
-		],
 	},
 	zh: {
 		eyebrow: '研究',
@@ -197,13 +188,6 @@ export const research = {
 				tags: ['影片理解', '自監督學習', 'JEPA', '世界模型'],
 			},
 		],
-		directionTitle: '我持續思考的問題',
-		questions: [
-			'哪些結構應內建於模型，哪些應由資料自然形成？',
-			'如何驗證表徵確實捕捉了重要的關係？',
-			'預測式目標能否產生在環境變動下仍有用的抽象表徵？',
-			'如何讓解釋保持忠實，又不因過度複雜而失去實用性？',
-		],
 	},
 } as const;
 
@@ -215,6 +199,8 @@ export type Project = {
 	title: Localized;
 	summary: Localized;
 	detail: Localized;
+	image: string;
+	imageAlt: Localized;
 	tags: string[];
 	links: { label: Localized; url: string }[];
 	accent: 'clay' | 'sage' | 'ink' | 'sand';
@@ -237,6 +223,11 @@ export const projects: Project[] = [
 		detail: {
 			en: 'Compared convolutional and non-convolutional sparse autoencoder variants with PCA and Sparse PCA across 1D linear, 2D linear, and nonlinear simulations, then applied the framework to equatorial Pacific sea-surface temperatures from 2003–2020.',
 			zh: '在一維線性、二維線性與非線性模擬中，比較卷積及非卷積稀疏自編碼器與 PCA、Sparse PCA，並將方法應用於 2003–2020 年赤道太平洋海表溫度資料。',
+		},
+		image: '/images/projects/spatial-sparse-pca.jpg',
+		imageAlt: {
+			en: 'Sea-surface temperature loading vectors comparing PCA and SAE-C.',
+			zh: 'PCA 與 SAE-C 的海表溫度負荷向量比較。',
 		},
 		tags: ['Python', 'Autoencoders', 'Sparse PCA', 'Simulation'],
 		links: [
@@ -261,6 +252,11 @@ export const projects: Project[] = [
 			en: 'Built a post-hoc explanation pipeline around telecom HTTP-delay prediction. The method generates counterfactual samples, estimates local probability distributions, applies fuzzy labeling, and extracts decision-tree rules evaluated by fidelity, hit rate, and complexity.',
 			zh: '以電信 HTTP 延遲預測為情境，建立事後解釋流程：產生反事實樣本、估計局部機率分布、進行模糊標記，再萃取決策樹規則，並以忠實度、命中率與複雜度評估。',
 		},
+		image: '/images/projects/explanation-analysis.jpg',
+		imageAlt: {
+			en: 'Global fidelity results comparing DDT, ACFI, and the proposed method.',
+			zh: 'DDT、ACFI 與本研究方法的全域忠實度比較結果。',
+		},
 		tags: ['Explainable AI', 'Counterfactuals', 'Decision Trees', 'Telecom'],
 		links: [
 			{
@@ -283,6 +279,11 @@ export const projects: Project[] = [
 		detail: {
 			en: 'Reproduced SiamMAE in PyTorch, pretrained on UCF-101, and inspected learned correspondence through DAVIS-2017 video object segmentation examples.',
 			zh: '以 PyTorch 復現 SiamMAE，在 UCF-101 上進行預訓練，並透過 DAVIS-2017 影片物件分割範例檢視學到的對應關係。',
+		},
+		image: '/images/projects/siammae.jpg',
+		imageAlt: {
+			en: 'SiamMAE video object segmentation and motion correspondence results.',
+			zh: 'SiamMAE 的影片物件分割與動態對應結果。',
 		},
 		tags: ['PyTorch', 'Self-Supervised Learning', 'Video', 'Transformers'],
 		links: [
@@ -307,6 +308,11 @@ export const projects: Project[] = [
 			en: 'Implemented SimCLR, FixMatch, Grad-CAM, integrated gradients, memorization analysis, and layer criticality exercises for KTH’s advanced deep learning course.',
 			zh: '於 KTH 進階深度學習課程中實作 SimCLR、FixMatch、Grad-CAM、Integrated Gradients、記憶化分析與 layer criticality。',
 		},
+		image: '/images/projects/deep-learning-coursework.jpg',
+		imageAlt: {
+			en: 'Grad-CAM explanation heatmaps over ImageNet predictions.',
+			zh: 'ImageNet 預測結果上的 Grad-CAM 解釋熱圖。',
+		},
 		tags: ['PyTorch', 'SimCLR', 'FixMatch', 'Grad-CAM'],
 		links: [
 			{
@@ -329,6 +335,11 @@ export const projects: Project[] = [
 		detail: {
 			en: 'Processed raw camera images with PyTorch and OpenCV to predict lane direction, then connected predictions to ROS motion control for real-time lane following.',
 			zh: '使用 PyTorch 與 OpenCV 處理相機影像、預測車道方向，再將結果接入 ROS 運動控制，完成即時循線。',
+		},
+		image: '/images/projects/self-driving-robot.jpg',
+		imageAlt: {
+			en: 'Camera view of the self-driving robot following colored tracks.',
+			zh: '自駕機器人沿著彩色軌道行進的相機畫面。',
 		},
 		tags: ['PyTorch', 'OpenCV', 'ROS', 'Computer Vision'],
 		links: [

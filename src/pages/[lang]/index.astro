@@ -24,7 +24,7 @@ const description =
 <BaseLayout lang={lang} title={profile.name} description={description}>
 	<section class="hero shell">
 		<div class="hero__copy">
-			<h1>{t.intro}</h1>
+			<h1 class="sr-only">{profile.name}</h1>
 			<p class="hero__summary">{t.summary}</p>
 			<div class="button-row">
 				<a class="button" href={localizedPath(lang, 'research')}>
