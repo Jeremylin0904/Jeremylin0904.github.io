@@ -1,0 +1,109 @@
+---
+import type { Lang, Project } from '../data/site';
+
+interface Props {
+	project: Project;
+	lang: Lang;
+	showDetail?: boolean;
+}
+
+const { project, lang, showDetail = false } = Astro.props;
+---
+
+<article class="project-card" data-accent={project.accent} id={project.slug}>
+	<div class="project-card__visual" aria-hidden="true">
+		{
+			project.slug === 'spatial-sparse-pca' ? (
+				<svg viewBox="0 0 500 170">
+					<g fill="none" stroke="currentColor" opacity=".18">
+						<path d="M20 30H480M20 70H480M20 110H480M20 150H480" />
+						<path d="M60 15V160M140 15V160M220 15V160M300 15V160M380 15V160M460 15V160" />
+					</g>
+					<path
+						d="M25 121C71 115 80 51 126 55s58 74 102 65 61-78 109-68 54 55 137 27"
+						fill="none"
+						stroke="#a9583e"
+						stroke-width="5"
+						stroke-linecap="round"
+					/>
+					<g fill="#a9583e">
+						<circle cx="126" cy="55" r="6" />
+						<circle cx="228" cy="120" r="6" />
+						<circle cx="337" cy="52" r="6" />
+					</g>
+				</svg>
+			) : project.slug === 'explanation-analysis' ? (
+				<svg viewBox="0 0 500 170">
+					<g fill="none" stroke="#667560" stroke-width="2.5">
+						<path d="M90 35V135M90 68H210M210 68V30M210 68V110M210 110H335M335 110V78M335 110V142" />
+					</g>
+					<g fill="#f5f0e7" stroke="#667560" stroke-width="2">
+						<rect x="45" y="18" width="90" height="34" rx="17" />
+						<rect x="165" y="13" width="90" height="34" rx="17" />
+						<rect x="165" y="93" width="90" height="34" rx="17" />
+						<rect x="290" y="61" width="90" height="34" rx="17" />
+						<rect x="290" y="125" width="90" height="34" rx="17" />
+					</g>
+					<circle cx="430" cy="85" r="30" fill="#667560" opacity=".85" />
+					<path d="M419 85l8 8 15-18" fill="none" stroke="#f5f0e7" stroke-width="4" />
+				</svg>
+			) : project.slug === 'siammae' ? (
+				<svg viewBox="0 0 500 170">
+					<rect x="40" y="28" width="170" height="112" rx="12" fill="#252621" opacity=".82" />
+					<rect x="290" y="28" width="170" height="112" rx="12" fill="#252621" opacity=".82" />
+					<g fill="#f5f0e7" opacity=".7">
+						<rect x="65" y="52" width="30" height="30" />
+						<rect x="100" y="87" width="30" height="30" />
+						<rect x="135" y="52" width="30" height="30" />
+						<rect x="315" y="87" width="30" height="30" />
+						<rect x="350" y="52" width="30" height="30" />
+						<rect x="385" y="87" width="30" height="30" />
+					</g>
+					<path d="M215 84H285" stroke="#a9583e" stroke-width="4" stroke-dasharray="7 7" />
+				</svg>
+			) : project.slug === 'deep-learning-coursework' ? (
+				<svg viewBox="0 0 500 170">
+					<g fill="none" stroke="#a48246" stroke-width="2">
+						<circle cx="80" cy="85" r="24" />
+						<circle cx="200" cy="40" r="20" />
+						<circle cx="200" cy="130" r="20" />
+						<circle cx="320" cy="55" r="20" />
+						<circle cx="320" cy="115" r="20" />
+						<circle cx="430" cy="85" r="25" />
+						<path d="M104 78l76-32M104 92l76 31M220 40l80 14M220 130l80-14M340 55l66 23M340 115l66-23" />
+					</g>
+					<g fill="#a48246">
+						<circle cx="80" cy="85" r="8" />
+						<circle cx="430" cy="85" r="9" />
+					</g>
+				</svg>
+			) : (
+				<svg viewBox="0 0 500 170">
+					<path d="M45 134L150 42h200l105 92" fill="none" stroke="#a9583e" stroke-width="4" />
+					<path d="M250 42v92" stroke="#252621" stroke-width="3" stroke-dasharray="9 8" />
+					<path d="M95 134l58-54M405 134l-58-54" stroke="#252621" stroke-width="2" opacity=".3" />
+					<circle cx="250" cy="105" r="21" fill="#a9583e" opacity=".85" />
+				</svg>
+			)
+		}
+	</div>
+	<div class="project-card__meta">
+		<span>{project.category[lang]}</span>
+		<span>{project.year}</span>
+	</div>
+	<h3>{project.title[lang]}</h3>
+	<p class="project-card__summary">{project.summary[lang]}</p>
+	{showDetail && <p class="project-card__detail">{project.detail[lang]}</p>}
+	<ul class="tag-list" aria-label="Technologies and topics">
+		{project.tags.map((tag) => <li class="tag">{tag}</li>)}
+	</ul>
+	<div class="project-card__links">
+		{
+			project.links.map((link) => (
+				<a class="text-link" href={link.url} target="_blank" rel="noreferrer">
+					{link.label[lang]} <span aria-hidden="true">↗</span>
+				</a>
+			))
+		}
+	</div>
+</article>

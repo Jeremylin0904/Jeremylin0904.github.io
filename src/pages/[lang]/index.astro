@@ -1,0 +1,105 @@
+---
+import { Image } from 'astro:assets';
+import ProjectCard from '../../components/ProjectCard.astro';
+import { home, profile, projects, type Lang } from '../../data/site';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { getLangPaths, isLang, localizedPath } from '../../lib/i18n';
+import portrait from '../../assets/portrait.jpg';
+
+export function getStaticPaths() {
+	return getLangPaths();
+}
+
+const { lang: langParam } = Astro.params;
+if (!isLang(langParam)) throw new Error('Unsupported language');
+const lang: Lang = langParam;
+const t = home[lang];
+const featured = projects.filter((project) => project.featured);
+const description =
+	lang === 'en'
+		? 'Shiuan-Ting (Jeremy) Lin studies statistical learning, explainable AI, and representation learning, and works on AIOps and Network AI at Nokia.'
+		: '林宣廷（Jeremy）關注統計學習、可解釋 AI 與表徵學習，目前於 Nokia 從事 AIOps 與 Network AI。';
+---
+
+<BaseLayout lang={lang} title={profile.name} description={description}>
+	<section class="hero shell">
+		<div class="hero__copy">
+			<p class="eyebrow">{t.eyebrow}</p>
+			<h1>{t.intro}</h1>
+			<p class="hero__summary">{t.summary}</p>
+			<div class="button-row">
+				<a class="button" href={localizedPath(lang, 'research')}>
+					{t.primaryCta} <span aria-hidden="true">↗</span>
+				</a>
+				<a class="button button--ghost" href={localizedPath(lang, 'about')}>
+					{t.secondaryCta}
+				</a>
+			</div>
+		</div>
+
+		<figure class="hero-portrait">
+			<div class="hero-portrait__frame">
+				<Image
+					src={portrait}
+					alt={lang === 'en' ? 'Portrait of Shiuan-Ting Lin' : '林宣廷個人肖像'}
+					widths={[420, 720, 960]}
+					sizes="(max-width: 900px) 80vw, 32vw"
+					format="webp"
+					loading="eager"
+					fetchpriority="high"
+				/>
+			</div>
+			<figcaption class="hero-portrait__caption">
+				<span>{profile.location[lang]}</span>
+				<span>AI × Statistics</span>
+			</figcaption>
+		</figure>
+	</section>
+
+	<section class="section section--tint">
+		<div class="shell">
+			<header class="section-heading">
+				<h2>{t.selected}</h2>
+				<div>
+					<p>{t.selectedIntro}</p>
+					<a class="text-link mt-section" href={localizedPath(lang, 'projects')}>
+						{lang === 'en' ? 'View all projects' : '查看所有專案'}
+						<span aria-hidden="true">→</span>
+					</a>
+				</div>
+			</header>
+			<div class="project-grid">
+				{featured.map((project) => <ProjectCard project={project} lang={lang} />)}
+			</div>
+		</div>
+	</section>
+
+	<section class="section">
+		<div class="approach shell">
+			<div>
+				<p class="eyebrow">{lang === 'en' ? 'How I work' : '我的方法'}</p>
+				<h2>{t.approachTitle}</h2>
+			</div>
+			<div>
+				<p class="approach__intro">{t.approachBody}</p>
+				<ul class="thread-list">
+					{
+						t.threads.map(([title, body]) => (
+							<li>
+								<strong>{title}</strong>
+								<p>{body}</p>
+							</li>
+						))
+					}
+				</ul>
+			</div>
+		</div>
+	</section>
+
+	<section class="section shell">
+		<div class="next-card">
+			<h2>{t.nextTitle}</h2>
+			<p>{t.nextBody}</p>
+		</div>
+	</section>
+</BaseLayout>

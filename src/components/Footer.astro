@@ -1,0 +1,27 @@
+---
+import { profile, ui, type Lang } from '../data/site';
+
+interface Props {
+	lang: Lang;
+}
+
+const { lang } = Astro.props;
+const t = ui[lang];
+---
+
+<footer class="site-footer">
+	<div class="site-footer__inner shell">
+		<div>
+			<p class="site-footer__name">{profile.name}</p>
+			<p class="site-footer__meta">{t.footerNote}</p>
+		</div>
+		<div>
+			<p class="site-footer__meta">© {new Date().getFullYear()}</p>
+			<div class="site-footer__links">
+				<a href={`mailto:${profile.email}`}>Email</a>
+				<a href={profile.linkedin} rel="me noreferrer" target="_blank">LinkedIn</a>
+				<a href={profile.github} rel="me noreferrer" target="_blank">GitHub</a>
+			</div>
+		</div>
+	</div>
+</footer>

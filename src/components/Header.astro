@@ -1,0 +1,99 @@
+---
+import { profile, ui, type Lang } from '../data/site';
+import { alternatePath, localizedPath } from '../lib/i18n';
+
+interface Props {
+	lang: Lang;
+	pathname: string;
+}
+
+const { lang, pathname } = Astro.props;
+const t = ui[lang];
+const alternate = alternatePath(lang, pathname);
+
+const navItems = [
+	{ key: 'home', href: localizedPath(lang) },
+	{ key: 'about', href: localizedPath(lang, 'about') },
+	{ key: 'research', href: localizedPath(lang, 'research') },
+	{ key: 'projects', href: localizedPath(lang, 'projects') },
+	{ key: 'cv', href: localizedPath(lang, 'cv') },
+	{ key: 'contact', href: localizedPath(lang, 'contact') },
+] as const;
+
+const normalizedPath = pathname.endsWith('/') ? pathname : `${pathname}/`;
+---
+
+<header class="site-header">
+	<div class="site-header__inner shell">
+		<a class="wordmark" href={localizedPath(lang)} aria-label={`${profile.name} — ${t.nav.home}`}>
+			<span class="wordmark__mark" aria-hidden="true">JL</span>
+			<span>{profile.name}</span>
+		</a>
+
+		<button
+			class="menu-button"
+			type="button"
+			aria-expanded="false"
+			aria-controls="site-navigation"
+			data-menu-button
+		>
+			<span data-menu-label>{t.menu}</span>
+			<span aria-hidden="true">↗</span>
+		</button>
+
+		<div class="nav-wrap" id="site-navigation" data-nav-wrap data-open="false">
+			<nav aria-label="Primary">
+				<ul class="nav-list">
+					{
+						navItems.map((item) => (
+							<li>
+								<a
+									class="nav-link"
+									href={item.href}
+									aria-current={normalizedPath === item.href ? 'page' : undefined}
+								>
+									{t.nav[item.key]}
+								</a>
+							</li>
+						))
+					}
+				</ul>
+			</nav>
+			<a
+				class="language-link"
+				href={alternate}
+				aria-label={t.switchLanguage}
+				data-language-link
+				data-language={lang === 'en' ? 'zh' : 'en'}
+			>
+				{lang === 'en' ? '中' : 'EN'}
+			</a>
+		</div>
+	</div>
+</header>
+
+<script is:inline define:vars={{ openLabel: t.close, closedLabel: t.menu }}>
+	const button = document.querySelector('[data-menu-button]');
+	const nav = document.querySelector('[data-nav-wrap]');
+	const label = document.querySelector('[data-menu-label]');
+	const languageLink = document.querySelector('[data-language-link]');
+
+	button?.addEventListener('click', () => {
+		const isOpen = button.getAttribute('aria-expanded') === 'true';
+		button.setAttribute('aria-expanded', String(!isOpen));
+		nav?.setAttribute('data-open', String(!isOpen));
+		if (label) label.textContent = isOpen ? closedLabel : openLabel;
+		document.body.style.overflow = isOpen ? '' : 'hidden';
+	});
+
+	nav?.querySelectorAll('a').forEach((link) => {
+		link.addEventListener('click', () => {
+			document.body.style.overflow = '';
+		});
+	});
+
+	languageLink?.addEventListener('click', () => {
+		const language = languageLink.getAttribute('data-language');
+		if (language) localStorage.setItem('preferred-language', language);
+	});
+</script>

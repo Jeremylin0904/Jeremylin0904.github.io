@@ -1,0 +1,40 @@
+---
+import '../styles/global.css';
+---
+
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width" />
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<meta
+			name="description"
+			content="Shiuan-Ting (Jeremy) Lin — Statistical learning, explainable AI, and representation learning."
+		/>
+		<link rel="canonical" href="https://jeremylin0904.github.io/" />
+		<link rel="alternate" hreflang="en" href="https://jeremylin0904.github.io/en/" />
+		<link rel="alternate" hreflang="zh-Hant" href="https://jeremylin0904.github.io/zh/" />
+		<title>Shiuan-Ting (Jeremy) Lin</title>
+		<script is:inline>
+			(() => {
+				const saved = localStorage.getItem('preferred-language');
+				const detected = navigator.language.toLowerCase().startsWith('zh') ? 'zh' : 'en';
+				const language = saved === 'zh' || saved === 'en' ? saved : detected;
+				window.location.replace(`/${language}/`);
+			})();
+		</script>
+	</head>
+	<body>
+		<main class="root-redirect">
+			<div>
+				<h1>Shiuan-Ting (Jeremy) Lin</h1>
+				<p>Choose a language to continue · 請選擇語言</p>
+				<nav aria-label="Language">
+					<a class="button" href="/en/">English</a>
+					<a class="button button--ghost" href="/zh/">繁體中文</a>
+				</nav>
+			</div>
+		</main>
+	</body>
+</html>

@@ -1,0 +1,93 @@
+---
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import { profile, ui, type Lang } from '../data/site';
+import { absoluteUrl, alternatePath } from '../lib/i18n';
+import '../styles/global.css';
+
+interface Props {
+	lang: Lang;
+	title: string;
+	description: string;
+}
+
+const { lang, title, description } = Astro.props;
+const t = ui[lang];
+const pathname = Astro.url.pathname;
+const canonical = absoluteUrl(pathname);
+const alternate = absoluteUrl(alternatePath(lang, pathname));
+const pageTitle = title === profile.name ? title : `${title} — ${profile.shortName}`;
+const htmlLang = lang === 'zh' ? 'zh-Hant' : 'en';
+
+const personSchema = {
+	'@context': 'https://schema.org',
+	'@type': 'Person',
+	name: 'Shiuan-Ting Lin',
+	alternateName: 'Jeremy Lin',
+	url: 'https://jeremylin0904.github.io',
+	image: 'https://jeremylin0904.github.io/images/portrait.jpg',
+	email: `mailto:${profile.email}`,
+	jobTitle: 'Solution Architect, AIOps & Network AI',
+	worksFor: {
+		'@type': 'Organization',
+		name: 'Nokia',
+	},
+	alumniOf: [
+		{ '@type': 'CollegeOrUniversity', name: 'National Yang Ming Chiao Tung University' },
+		{ '@type': 'CollegeOrUniversity', name: 'KTH Royal Institute of Technology' },
+		{ '@type': 'CollegeOrUniversity', name: 'National Tsing Hua University' },
+	],
+	sameAs: [profile.github, profile.linkedin],
+	knowsAbout: [
+		'Statistical Learning',
+		'Explainable AI',
+		'Self-Supervised Learning',
+		'Representation Learning',
+		'Network AI',
+	],
+};
+---
+
+<!doctype html>
+<html lang={htmlLang}>
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width" />
+		<meta name="generator" content={Astro.generator} />
+		<meta name="description" content={description} />
+		<meta name="theme-color" content="#f5f0e7" />
+		<meta name="color-scheme" content="light" />
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<link rel="canonical" href={canonical} />
+		<link rel="alternate" hreflang={htmlLang} href={canonical} />
+		<link
+			rel="alternate"
+			hreflang={lang === 'en' ? 'zh-Hant' : 'en'}
+			href={alternate}
+		/>
+		<link rel="alternate" hreflang="x-default" href="https://jeremylin0904.github.io/en/" />
+
+		<meta property="og:type" content="website" />
+		<meta property="og:site_name" content={profile.name} />
+		<meta property="og:title" content={pageTitle} />
+		<meta property="og:description" content={description} />
+		<meta property="og:url" content={canonical} />
+		<meta property="og:image" content="https://jeremylin0904.github.io/og-card.svg" />
+		<meta property="og:locale" content={lang === 'en' ? 'en_US' : 'zh_TW'} />
+		<meta name="twitter:card" content="summary_large_image" />
+		<meta name="twitter:title" content={pageTitle} />
+		<meta name="twitter:description" content={description} />
+		<meta name="twitter:image" content="https://jeremylin0904.github.io/og-card.svg" />
+
+		<title>{pageTitle}</title>
+		<script is:inline type="application/ld+json" set:html={JSON.stringify(personSchema)} />
+	</head>
+	<body>
+		<a class="skip-link" href="#main-content">{t.skip}</a>
+		<Header lang={lang} pathname={pathname} />
+		<main id="main-content">
+			<slot />
+		</main>
+		<Footer lang={lang} />
+	</body>
+</html>

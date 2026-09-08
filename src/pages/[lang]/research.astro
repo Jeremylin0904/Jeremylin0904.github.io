@@ -1,0 +1,100 @@
+---
+import ProjectCard from '../../components/ProjectCard.astro';
+import { projects, research, type Lang } from '../../data/site';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { getLangPaths, isLang } from '../../lib/i18n';
+
+export function getStaticPaths() {
+	return getLangPaths();
+}
+
+const { lang: langParam } = Astro.params;
+if (!isLang(langParam)) throw new Error('Unsupported language');
+const lang: Lang = langParam;
+const t = research[lang];
+const featured = projects.filter((project) => project.featured);
+const description =
+	lang === 'en'
+		? 'Research interests and thesis work by Shiuan-Ting Lin in structured representations, explainable AI, and self-supervised predictive learning.'
+		: '林宣廷在結構化表徵、可解釋 AI、自監督與預測式學習的研究興趣與論文成果。';
+---
+
+<BaseLayout lang={lang} title={t.eyebrow} description={description}>
+	<header class="page-hero shell">
+		<p class="eyebrow">{t.eyebrow}</p>
+		<h1>{t.title}</h1>
+		<p class="page-hero__intro">{t.intro}</p>
+	</header>
+
+	<section class="section section--tint">
+		<div class="shell">
+			<header class="section-heading">
+				<h2>{t.threadsTitle}</h2>
+				<p>
+					{
+						lang === 'en'
+							? 'A continuous path from statistical structure to models that explain and anticipate.'
+							: '一條從統計結構出發，走向可解釋與可預測模型的連續路徑。'
+					}
+				</p>
+			</header>
+			<div>
+				{
+					t.threads.map((thread) => (
+						<article class="research-thread">
+							<p class="research-thread__number">{thread.number}</p>
+							<h3>{thread.title}</h3>
+							<div class="research-thread__body">
+								<p>{thread.body}</p>
+								<ul class="tag-list">
+									{thread.tags.map((tag) => <li class="tag">{tag}</li>)}
+								</ul>
+							</div>
+						</article>
+					))
+				}
+			</div>
+		</div>
+	</section>
+
+	<section class="section shell">
+		<header class="section-heading">
+			<h2>{lang === 'en' ? 'Completed thesis work' : '已完成的論文研究'}</h2>
+			<p>
+				{
+					lang === 'en'
+						? 'Two complementary investigations into what models retain and how they communicate decisions.'
+						: '從模型保留何種資訊，以及如何傳達決策出發的兩項互補研究。'
+				}
+			</p>
+		</header>
+		<div class="project-grid">
+			{featured.map((project) => <ProjectCard project={project} lang={lang} showDetail />)}
+		</div>
+	</section>
+
+	<section class="section section--tint">
+		<div class="shell">
+			<header class="section-heading">
+				<h2>{t.directionTitle}</h2>
+				<p>
+					{
+						lang === 'en'
+							? 'These questions connect my completed work to the directions I am exploring now.'
+							: '這些問題連結了已完成的研究，以及我目前持續探索的方向。'
+					}
+				</p>
+			</header>
+			<ol class="question-grid">
+				{
+					t.questions.map((question, index) => (
+						<li>
+							<span>{String(index + 1).padStart(2, '0')}</span>
+							{question}
+						</li>
+					))
+				}
+			</ol>
+		</div>
+	</section>
+</BaseLayout>

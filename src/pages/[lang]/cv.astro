@@ -1,0 +1,131 @@
+---
+import {
+	education,
+	experience,
+	pageCopy,
+	profile,
+	skills,
+	type Lang,
+	ui,
+} from '../../data/site';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { getLangPaths, isLang } from '../../lib/i18n';
+
+export function getStaticPaths() {
+	return getLangPaths();
+}
+
+const { lang: langParam } = Astro.params;
+if (!isLang(langParam)) throw new Error('Unsupported language');
+const lang: Lang = langParam;
+const t = pageCopy.cv[lang];
+const common = ui[lang];
+const description =
+	lang === 'en'
+		? 'Curriculum vitae of Shiuan-Ting Lin: AI systems experience at Nokia, explainable AI research at Ericsson, and graduate training in statistics.'
+		: '林宣廷個人履歷：Nokia AI 系統經歷、Ericsson 可解釋 AI 研究，以及統計學研究所訓練。';
+---
+
+<BaseLayout lang={lang} title={t.eyebrow} description={description}>
+	<header class="page-hero shell">
+		<p class="eyebrow">{t.eyebrow}</p>
+		<h1>{t.title}</h1>
+		<p class="page-hero__intro">{t.intro}</p>
+	</header>
+
+	<section class="section section--tint">
+		<div class="shell">
+			<div class="cv-banner">
+				<div>
+					<h2>{lang === 'en' ? 'Prefer the concise version?' : '想快速瀏覽？'}</h2>
+					<p>{t.download}</p>
+				</div>
+				<div class="button-row">
+					<a class="button" href={profile.cv} target="_blank">{common.viewCv}</a>
+					<a class="button button--ghost" href={profile.cv} download>{common.downloadCv}</a>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<section class="section shell">
+		<header class="section-heading">
+			<h2>{t.experience}</h2>
+			<p>
+				{
+					lang === 'en'
+						? 'Translating between research questions, product requirements, and operational constraints.'
+						: '在研究問題、產品需求與真實維運限制之間進行轉譯。'
+				}
+			</p>
+		</header>
+		<ol class="timeline">
+			{
+				experience.map((item) => (
+					<li class="timeline__item">
+						<p class="timeline__period">{item.period[lang]}</p>
+						<div>
+							<h3>{item.org}</h3>
+							<p class="timeline__role">{item.role[lang]}</p>
+							<p class="timeline__location">{item.location[lang]}</p>
+							<ul class="timeline__points">
+								{item.points[lang].map((point) => <li>{point}</li>)}
+							</ul>
+						</div>
+					</li>
+				))
+			}
+		</ol>
+	</section>
+
+	<section class="section section--tint">
+		<div class="shell">
+			<header class="section-heading">
+				<h2>{t.education}</h2>
+				<p>
+					{
+						lang === 'en'
+							? 'A quantitative foundation shaped through mathematics, statistics, and computer science.'
+							: '由數學、統計與資訊科學共同形塑的量化基礎。'
+					}
+				</p>
+			</header>
+			<ul class="simple-list">
+				{
+					education.map((item) => (
+						<li class="simple-list__item">
+							<div>
+								<h3>{item.school}</h3>
+								<p>{item.degree[lang]}</p>
+							</div>
+							<time>{item.period}</time>
+						</li>
+					))
+				}
+			</ul>
+		</div>
+	</section>
+
+	<section class="section shell">
+		<header class="section-heading">
+			<h2>{t.skills}</h2>
+			<p>
+				{
+					lang === 'en'
+						? 'Tools and methods used across research prototypes and production-facing systems.'
+						: '用於研究原型與面向實務系統的工具與方法。'
+				}
+			</p>
+		</header>
+		<ul class="skill-list">
+			{
+				skills.map((skill) => (
+					<li>
+						<strong>{skill.label[lang]}</strong>
+						<span>{skill.items}</span>
+					</li>
+				))
+			}
+		</ul>
+	</section>
+</BaseLayout>

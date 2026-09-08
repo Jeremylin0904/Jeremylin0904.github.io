@@ -1,0 +1,55 @@
+---
+import { pageCopy, profile, type Lang } from '../../data/site';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { getLangPaths, isLang } from '../../lib/i18n';
+
+export function getStaticPaths() {
+	return getLangPaths();
+}
+
+const { lang: langParam } = Astro.params;
+if (!isLang(langParam)) throw new Error('Unsupported language');
+const lang: Lang = langParam;
+const t = pageCopy.contact[lang];
+const description =
+	lang === 'en'
+		? 'Contact Shiuan-Ting (Jeremy) Lin to exchange ideas about statistical learning, explainable AI, representation learning, or Network AI.'
+		: '聯絡林宣廷（Jeremy），交流統計學習、可解釋 AI、表徵學習或 Network AI。';
+---
+
+<BaseLayout lang={lang} title={t.eyebrow} description={description}>
+	<header class="page-hero shell">
+		<p class="eyebrow">{t.eyebrow}</p>
+		<h1>{t.title}</h1>
+		<p class="page-hero__intro">{t.intro}</p>
+	</header>
+
+	<section class="section section--tint">
+		<div class="shell">
+			<div class="contact-grid">
+				<div class="contact-card">
+					<p class="contact-card__label">{t.emailLabel}</p>
+					<a class="contact-email" href={`mailto:${profile.email}`}>{profile.email}</a>
+					<p class="contact-note">{t.response}</p>
+				</div>
+				<div class="contact-card">
+					<p class="contact-card__label">{t.elsewhere}</p>
+					<ul class="social-list">
+						<li>
+							<a href={profile.linkedin} target="_blank" rel="me noreferrer">
+								LinkedIn <span aria-hidden="true">↗</span>
+							</a>
+						</li>
+						<li>
+							<a href={profile.github} target="_blank" rel="me noreferrer">
+								GitHub <span aria-hidden="true">↗</span>
+							</a>
+						</li>
+					</ul>
+					<p class="contact-card__label mt-section">{t.locationLabel}</p>
+					<p class="contact-note">{profile.location[lang]}</p>
+				</div>
+			</div>
+		</div>
+	</section>
+</BaseLayout>
