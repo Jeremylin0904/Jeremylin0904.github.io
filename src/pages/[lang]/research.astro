@@ -1,6 +1,5 @@
 ---
-import ProjectCard from '../../components/ProjectCard.astro';
-import { projects, research, type Lang } from '../../data/site';
+import { research, type Lang } from '../../data/site';
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import { getLangPaths, isLang } from '../../lib/i18n';
 
@@ -12,11 +11,10 @@ const { lang: langParam } = Astro.params;
 if (!isLang(langParam)) throw new Error('Unsupported language');
 const lang: Lang = langParam;
 const t = research[lang];
-const featured = projects.filter((project) => project.featured);
 const description =
 	lang === 'en'
-		? 'Research interests and thesis work by Shiuan-Ting Lin in structured representations, explainable AI, and self-supervised predictive learning.'
-		: '林宣廷在結構化表徵、可解釋 AI、自監督與預測式學習的研究興趣與論文成果。';
+		? 'Research interests of Shiuan-Ting Lin in structured representations, explainable AI, and self-supervised predictive learning.'
+		: '林宣廷在結構化表徵、可解釋 AI、自監督與預測式學習的研究方向。';
 ---
 
 <BaseLayout lang={lang} title={t.eyebrow} description={description}>
@@ -45,15 +43,6 @@ const description =
 					))
 				}
 			</div>
-		</div>
-	</section>
-
-	<section class="section shell">
-		<header class="section-heading section-heading--compact">
-			<h2>{lang === 'en' ? 'Completed thesis work' : '已完成的論文研究'}</h2>
-		</header>
-		<div class="project-grid">
-			{featured.map((project) => <ProjectCard project={project} lang={lang} showDetail />)}
 		</div>
 	</section>
 

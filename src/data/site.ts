@@ -508,7 +508,7 @@ export const pageCopy = {
 			experience: 'Professional experience',
 			education: 'Education',
 			skills: 'Skills',
-			download: 'Download the full two-page CV for a concise overview.',
+			download: 'Preview the two-page CV below, or open and download the PDF.',
 		},
 		zh: {
 			eyebrow: '個人履歷',
@@ -517,7 +517,7 @@ export const pageCopy = {
 			experience: '工作經歷',
 			education: '學歷',
 			skills: '技能',
-			download: '下載兩頁 PDF 履歷，快速瀏覽完整背景。',
+			download: '在下方預覽兩頁履歷，或開啟、下載 PDF。',
 		},
 	},
 	contact: {

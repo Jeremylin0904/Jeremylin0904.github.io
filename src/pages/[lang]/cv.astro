@@ -1,11 +1,7 @@
 ---
 import {
-	awards,
-	education,
-	experience,
 	pageCopy,
 	profile,
-	skills,
 	type Lang,
 	ui,
 } from '../../data/site';
@@ -36,7 +32,7 @@ const description =
 		<div class="shell">
 			<div class="cv-banner">
 				<div>
-					<h2>{lang === 'en' ? 'CV PDF' : 'PDF 履歷'}</h2>
+					<h2>{lang === 'en' ? 'PDF preview' : 'PDF 預覽'}</h2>
 					<p>{t.download}</p>
 				</div>
 				<div class="button-row">
@@ -44,84 +40,23 @@ const description =
 					<a class="button button--ghost" href={profile.cv} download>{common.downloadCv}</a>
 				</div>
 			</div>
-		</div>
-	</section>
-
-	<section class="section shell">
-		<header class="section-heading section-heading--compact">
-			<h2>{t.experience}</h2>
-		</header>
-		<ol class="timeline">
-			{
-				experience.map((item) => (
-					<li class="timeline__item">
-						<p class="timeline__period">{item.period[lang]}</p>
-						<div>
-							<h3>{item.org}</h3>
-							<p class="timeline__role">{item.role[lang]}</p>
-							<p class="timeline__location">{item.location[lang]}</p>
-							<ul class="timeline__points">
-								{item.points[lang].map((point) => <li>{point}</li>)}
-							</ul>
-						</div>
-					</li>
-				))
-			}
-		</ol>
-	</section>
-
-	<section class="section section--tint">
-		<div class="shell">
-			<header class="section-heading section-heading--compact">
-				<h2>{t.education}</h2>
-			</header>
-			<ul class="simple-list">
-				{
-					education.map((item) => (
-						<li class="simple-list__item">
-							<div>
-								<h3>{item.school}</h3>
-								<p>{item.degree[lang]}</p>
-							</div>
-							<time>{item.period}</time>
-						</li>
-					))
-				}
-			</ul>
-		</div>
-	</section>
-
-	<section class="section shell">
-		<header class="section-heading section-heading--compact">
-			<h2>{t.skills}</h2>
-		</header>
-		<ul class="skill-list">
-			{
-				skills.map((skill) => (
-					<li>
-						<strong>{skill.label[lang]}</strong>
-						<span>{skill.items}</span>
-					</li>
-				))
-			}
-		</ul>
-	</section>
-
-	<section class="section section--tint">
-		<div class="shell">
-			<header class="section-heading section-heading--compact">
-				<h2>{lang === 'en' ? 'Selected recognition' : '獲獎紀錄'}</h2>
-			</header>
-			<div class="award-grid">
-				{
-					awards.map((award) => (
-						<article class="award-card">
-							<time>{award.year}</time>
-							<h3>{award.title[lang]}</h3>
-							<p>{award.note[lang]}</p>
-						</article>
-					))
-				}
+			<div
+				class="cv-preview"
+				aria-label={lang === 'en' ? 'Shiuan-Ting Lin CV PDF preview' : '林宣廷 PDF 履歷預覽'}
+			>
+				<img
+					src="/images/cv/page-1.jpg"
+					alt={lang === 'en' ? 'CV page 1 of 2' : '履歷第 1 頁，共 2 頁'}
+					width="1102"
+					height="1426"
+				/>
+				<img
+					src="/images/cv/page-2.jpg"
+					alt={lang === 'en' ? 'CV page 2 of 2' : '履歷第 2 頁，共 2 頁'}
+					width="1102"
+					height="1426"
+					loading="lazy"
+				/>
 			</div>
 		</div>
 	</section>

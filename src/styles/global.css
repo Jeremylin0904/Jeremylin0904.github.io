@@ -688,11 +688,6 @@
 		line-height: 1.65;
 	}
 
-	.bio-copy__actions {
-		margin-top: 0.4rem;
-		font-family: var(--sans);
-	}
-
 	.timeline {
 		display: grid;
 		gap: 0;
@@ -838,6 +833,25 @@
 		max-width: 40rem;
 		margin-top: 0.6rem;
 		color: var(--ink-soft);
+	}
+
+	.cv-preview {
+		display: grid;
+		grid-template-columns: repeat(2, minmax(0, 1fr));
+		gap: 1rem;
+		margin-top: 1.25rem;
+		padding: clamp(0.75rem, 2vw, 1.5rem);
+		border: 1px solid var(--line);
+		border-radius: var(--radius);
+		background: #393936;
+	}
+
+	.cv-preview img {
+		display: block;
+		width: 100%;
+		height: auto;
+		background: white;
+		box-shadow: 0 0.8rem 2rem rgba(0, 0, 0, 0.18);
 	}
 
 	.skill-list {
@@ -1101,7 +1115,8 @@
 
 	.project-grid,
 	.award-grid,
-	.contact-grid {
+	.contact-grid,
+	.cv-preview {
 		grid-template-columns: 1fr;
 	}
 
