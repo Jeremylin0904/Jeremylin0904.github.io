@@ -16,14 +16,15 @@ const t = ui[lang];
 const pathname = Astro.url.pathname;
 const canonical = absoluteUrl(pathname);
 const alternate = absoluteUrl(alternatePath(lang, pathname));
-const pageTitle = title === profile.name ? title : `${title} — ${profile.shortName}`;
+const displayName = '林宣廷 · Shiuan-Ting Lin (Jeremy)';
+const pageTitle = title === profile.name ? displayName : `${title} — Shiuan-Ting Lin (Jeremy)`;
 const htmlLang = lang === 'zh' ? 'zh-Hant' : 'en';
 
 const personSchema = {
 	'@context': 'https://schema.org',
 	'@type': 'Person',
 	name: 'Shiuan-Ting Lin',
-	alternateName: 'Jeremy Lin',
+	alternateName: ['Jeremy Lin', '林宣廷'],
 	url: 'https://jeremylin0904.github.io',
 	image: 'https://jeremylin0904.github.io/images/portrait.jpg',
 	email: `mailto:${profile.email}`,
@@ -43,6 +44,9 @@ const personSchema = {
 		'Explainable AI',
 		'Self-Supervised Learning',
 		'Representation Learning',
+		'World Models',
+		'Computer Vision',
+		'Embodied AI',
 		'Network AI',
 	],
 };
@@ -68,7 +72,7 @@ const personSchema = {
 		<link rel="alternate" hreflang="x-default" href="https://jeremylin0904.github.io/en/" />
 
 		<meta property="og:type" content="website" />
-		<meta property="og:site_name" content={profile.name} />
+		<meta property="og:site_name" content={displayName} />
 		<meta property="og:title" content={pageTitle} />
 		<meta property="og:description" content={description} />
 		<meta property="og:url" content={canonical} />
